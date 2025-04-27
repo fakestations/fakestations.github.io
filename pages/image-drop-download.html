@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Updated SEO Title -->
+    <title>Free Image Upload, Drag & Drop, Paste and Download Tool | FakeStation</title>
+    <!-- Meta Description -->
+    <meta name="description" content="Upload, drag & drop, or paste an image easily with our free online tool. Preview and download images instantly without any server upload. Privacy-focused and fast." />
+    <!-- Keywords -->
+    <meta name="keywords" content="image upload tool, drag and drop image, paste image online, download uploaded image, free image uploader, FakeStation tools" />
+    <meta property="og:title" content="Free Image Upload, Paste & Download Tool | FakeStation" />
+    <meta property="og:description" content="Drag, drop, paste and download images instantly without any server storage. 100% private, fast, and free." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/pages/image-drop-download.html" />
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../src/style.css">
+    <style>
+      .toolBody {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        flex-direction: column;
+      }
+
+      .container {
+        box-sizing: border-box;
+        overflow-y: auto;
+      }
+
+      .drop-area {
+        border: 2px dashed #4caf50;
+        padding: 30px;
+        margin: auto;
+        margin-bottom: 20px;
+        cursor: pointer;
+        width: 85%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #4caf50;
+        font-size: 18px;
+        border-radius: 30px;
+        text-align: center;
+      }
+
+      .paste-tip {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 15px;
+        font-size: 16px;
+        text-align: center;
+        width: 80%;
+        margin: 10px auto;
+        display: none;
+      }
+
+      .preview {
+        max-width: 100%;
+        max-height: 300px;
+        display: none;
+        margin-top: 20px;
+      }
+
+      .download-btn {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        display: none;
+        margin-top: 20px;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .download-btn:hover {
+        background-color: #45a049;
+      }
+
+      body {
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div
+        class="flex flex-col justify-center items-center py-4 px-4 sm:px-0 border-b gap-2">
+        <a href="/" class="logoContainer"> 🚀 FakeStation </a>
+      </div>
+    </header>
+    <div class="toolBody">
+      <div class="container">
+        <h2>Upload or Drag & Drop an Image</h2>
+
+        <div class="drop-area" id="drop-area">
+          Drop an image here or click to select or paste
+        </div>
+
+        <input type="file" id="file-input" style="display: none" />
+        <img id="image-preview" class="preview" alt="Image Preview" />
+        <a id="download-link" class="download-btn" download>Download Image</a>
+      </div>
+    </div>
+
+    <!-- Documentation Section -->
+    <section
+      style="
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        border-radius: 10px;
+      ">
+      <h2 style="text-align: center; color: #4caf50">
+        📄 Image Upload and Download Tool
+      </h2>
+
+      <h3 style="color: #333">📌 What is it?</h3>
+      <p style="line-height: 1.6; color: #555">
+        This is a simple, lightweight web tool that allows users to
+        <strong>upload</strong>, <strong>drag &amp; drop</strong>, or
+        <strong>paste</strong> an image into a webpage. Once the image is
+        loaded, users can <strong>preview</strong> it and
+        <strong>download</strong> it easily in its original format.
+      </p>
+
+      <h3 style="color: #333">🎯 Why use this tool?</h3>
+      <ul style="line-height: 1.8; color: #555">
+        <li>
+          <strong>Quick and Easy:</strong> Instantly upload or paste images
+          without complicated steps.
+        </li>
+        <li>
+          <strong>Multi-Input Support:</strong> Supports drag-and-drop, file
+          selection, and clipboard paste.
+        </li>
+        <li>
+          <strong>No Backend Needed:</strong> Everything happens in the
+          browser—no server uploads.
+        </li>
+        <li>
+          <strong>Free and Lightweight:</strong> Built with simple HTML, CSS,
+          and JavaScript.
+        </li>
+        <li>
+          <strong>Privacy Focused:</strong> Your images stay on your device;
+          nothing is uploaded externally.
+        </li>
+        <li>
+          <strong>Download Ready:</strong> Instantly download the uploaded image
+          with the correct format.
+        </li>
+      </ul>
+
+      <h3 style="color: #333">🛠️ How to Use?</h3>
+      <ol style="line-height: 1.8; color: #555">
+        <li>
+          Click on the <strong>Drop Area</strong> or
+          <strong>Drag &amp; Drop</strong> an image into it.
+        </li>
+        <li>
+          Alternatively, simply <strong>Paste</strong> an image from your
+          clipboard (Ctrl+V / Command+V).
+        </li>
+        <li>Preview your image immediately on the page.</li>
+        <li>
+          Click the <strong>Download</strong> button to save the image locally.
+        </li>
+      </ol>
+    </section>
+
+    <!-- other tool -->
+    <div class="main-header">
+      <div
+        class="flex justify-center w-full gap-2 flex-wrap"
+        style="margin-top: 8px">
+        <a
+          title="YouTube Tags Generator"
+          href="../pages/whatsapp-fake-chat-generator.html"
+          class="mainLink"
+          >WhatsApp Chat</a
+        >
+
+        <a
+          title="Image Drop and Download"
+          href="../pages/image-drop-download.html"
+          class="mainLink">
+          Image Drop &amp; Download
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-dm-generator.html"
+          class="mainLink">
+          Instagram DM Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-notification.html"
+          class="mainLink">
+          Instagram Notification Generator
+        </a>
+      </div>
+    </div>
+    <script>
+      const dropArea = document.getElementById("drop-area");
+      const fileInput = document.getElementById("file-input");
+      const imagePreview = document.getElementById("image-preview");
+      const downloadLink = document.getElementById("download-link");
+      const pasteTip = document.getElementById("paste-tip");
+
+      dropArea.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.style.backgroundColor = "#e0e0e0";
+      });
+
+      dropArea.addEventListener("dragleave", () => {
+        dropArea.style.backgroundColor = "transparent";
+      });
+
+      dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        dropArea.style.backgroundColor = "transparent";
+        handleImage(event.dataTransfer.files[0]);
+      });
+
+      fileInput.addEventListener("change", (event) => {
+        handleImage(event.target.files[0]);
+      });
+
+      document.addEventListener("paste", (event) => {
+        const clipboardItems = event.clipboardData.items;
+        for (let i = 0; i < clipboardItems.length; i++) {
+          const item = clipboardItems[i];
+          if (item.type.startsWith("image/")) {
+            const file = item.getAsFile();
+            handleImage(file);
+          }
+        }
+      });
+
+      function handleImage(file) {
+        if (file && file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block";
+            const extension = file.name.split(".").pop();
+            downloadLink.href = e.target.result;
+            downloadLink.download = `image.${extension}`;
+            downloadLink.style.display = "inline-block";
+          };
+          reader.readAsDataURL(file);
+        } else {
+          alert("Please select a valid image file.");
+        }
+      }
+
+      window.onload = function () {
+        pasteTip.style.display = "block";
+      };
+    </script>
+  </body>
+</html>

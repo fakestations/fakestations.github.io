@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="FakeStation is a free online toolset where you can create high-quality fake UIs like WhatsApp chats, Instagram DMs, and Fake Tweets easily. More exciting tools like Fake Calls, Spotify Wraps, and others are coming soon!" />
+    <meta
+      name="keywords"
+      content="Fake Tweet Generator, Fake WhatsApp Chat, Fake Instagram DM, Downloadable Fake Chat, FakeStation, Free Fake UI Generator, Create Fake Tweets" />
+    <meta name="author" content="FakeStation Team" />
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+    <title>
+      Fake Tweet Generator - Create & Download Realistic Tweets | FakeStation
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #e6ecf0;
+        padding: 20px;
+        margin: 0;
+      }
+
+      header {
+        /* background: #111; */
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .main-header a {
+        font-size: 35px;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #1da1f2;
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      input,
+      textarea {
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px;
+        background: #1da1f2;
+        color: white;
+        border: none;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .tweet {
+        background: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-top: 20px;
+        position: relative;
+      }
+      .tweet-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .tweet-header img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+      }
+      .tweet-header .name {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+      .tweet-header .handle {
+        color: gray;
+        margin-left: 5px;
+      }
+      .verified {
+        width: 18px !important;
+        height: 18px !important;
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+      .tweet-content {
+        margin: 15px 0;
+        font-size: 1.2em;
+      }
+      .tweet-meta {
+        color: gray;
+        font-size: 0.9em;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div
+        class="flex flex-col justify-center items-center py-4 px-4 sm:px-0 border-b gap-2">
+        <a href="/" class="logoContainer"> 🚀 FakeStation </a>
+      </div>
+    </header>
+    <div class="container">
+      <h1>Fake Tweet Generator</h1>
+
+      <div class="input-group">
+        <input type="file" id="profilePic" accept="image/*" />
+        <input
+          type="text"
+          id="username"
+          placeholder="Username (e.g., Elon Musk)" />
+        <input type="text" id="handle" placeholder="Handle (e.g., @elonmusk)" />
+        <textarea
+          id="tweet"
+          placeholder="Type your tweet..."
+          rows="3"></textarea>
+        <input
+          type="text"
+          id="time"
+          placeholder="Time (e.g., 8:26 PM · Dec 1, 2022)" />
+        <input
+          type="text"
+          id="stats"
+          placeholder="Stats (e.g., 1,664 Retweets 281 Quote Tweets 18.2K Likes)" />
+        <button onclick="generateTweet()">Generate Tweet</button>
+        <button onclick="downloadTweet()">Download Tweet</button>
+      </div>
+
+      <div id="tweetOutput" class="tweet" style="display: none">
+        <div class="tweet-header">
+          <img id="outputProfilePic" src="" alt="Profile Picture" />
+          <div>
+            <span class="name" id="outputUsername"></span>
+            <img
+              src="../img/Twitter_Verified_Badge.png"
+              class="verified"
+              alt="Verified Badge" />
+            <div class="handle" id="outputHandle"></div>
+          </div>
+        </div>
+        <div class="tweet-content" id="outputTweet"></div>
+        <div class="tweet-meta" id="outputTime"></div>
+        <div class="tweet-meta" id="outputStats"></div>
+      </div>
+    </div>
+    <section
+      style="
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 12px;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      ">
+      <h2>📄 Fake Tweet Generator Documentation</h2>
+      <hr />
+
+      <h3>📌 What is this tool?</h3>
+      <p>
+        The <strong>Fake Tweet Generator</strong> allows you to create a custom,
+        realistic-looking Twitter post easily. You can personalize every detail,
+        including profile picture, username, handle, tweet content, timestamp,
+        and engagement stats.
+      </p>
+
+      <h3>🛠️ How to Use:</h3>
+      <ol>
+        <li>
+          <strong>Upload Profile Picture:</strong><br />
+          Click on the "Upload" button and choose a profile image.<br />
+          <em>Recommended size: 48x48 pixels (square image).</em>
+        </li>
+        <li>
+          <strong>Fill in Tweet Details:</strong><br />
+          <ul>
+            <li>
+              <strong>Username:</strong> The display name (e.g., Elon Musk).
+            </li>
+            <li>
+              <strong>Handle:</strong> The Twitter handle (e.g., @elonmusk).
+            </li>
+            <li><strong>Tweet:</strong> Write your fake tweet content.</li>
+            <li><strong>Time:</strong> Format like "8:26 PM · Dec 1, 2022".</li>
+            <li>
+              <strong>Stats:</strong> Write likes, retweets, and quote tweets
+              (e.g., "1,664 Retweets 281 Quote Tweets 18.2K Likes").
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Generate Tweet:</strong><br />
+          Click the <strong>"Generate Tweet"</strong> button to create your
+          customized tweet preview.
+        </li>
+        <li>
+          <strong>Download Tweet:</strong><br />
+          After generating, click <strong>"Download Tweet"</strong> to save the
+          tweet as an image (<code>.png</code> file).
+        </li>
+      </ol>
+
+      <h3>🎯 Features:</h3>
+      <ul>
+        <li>100% customizable tweet</li>
+        <li>Verified badge included</li>
+        <li>Downloadable high-quality image</li>
+        <li>No watermark</li>
+        <li>Easy and fast to use</li>
+      </ul>
+
+      <h3>⚡ Tips:</h3>
+      <ul>
+        <li>Keep text and stats realistic for best results.</li>
+        <li>
+          You can create tweets for memes, jokes, announcements, or design
+          mockups.
+        </li>
+        <li>
+          Use dark mode screenshots for an even more realistic Twitter feel!
+          (Coming soon!)
+        </li>
+      </ul>
+
+      <h3>🚀 Ready to create your fake viral tweets? Let’s go!</h3>
+    </section>
+
+    <script>
+      let uploadedProfilePic = "";
+
+      document
+        .getElementById("profilePic")
+        .addEventListener("change", function (e) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            uploadedProfilePic = event.target.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        });
+
+      function generateTweet() {
+        document.getElementById("tweetOutput").style.display = "block";
+
+        document.getElementById("outputProfilePic").src =
+          uploadedProfilePic ||
+          "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png";
+        document.getElementById("outputUsername").textContent =
+          document.getElementById("username").value || "Username";
+        document.getElementById("outputHandle").textContent =
+          document.getElementById("handle").value || "@handle";
+        document.getElementById("outputTweet").textContent =
+          document.getElementById("tweet").value || "This is a sample tweet!";
+        document.getElementById("outputTime").textContent =
+          document.getElementById("time").value || "8:26 PM · Dec 1, 2022";
+        document.getElementById("outputStats").textContent =
+          document.getElementById("stats").value ||
+          "1,664 Retweets 281 Quote Tweets 18.2K Likes";
+      }
+
+      function downloadTweet() {
+        const tweet = document.getElementById("tweetOutput");
+        html2canvas(tweet).then(function (canvas) {
+          const link = document.createElement("a");
+          link.download = "fake-tweet.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>

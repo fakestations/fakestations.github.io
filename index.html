@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      FakeStation - Create Fake Chats, Stories & Notifications for Fun and
+      Portfolio
+    </title>
+
+    <!-- Primary Meta Tags -->
+    <meta
+      name="title"
+      content="FakeStation - Free Fake Chat, Story & Notification Generator Tools" />
+    <meta
+      name="description"
+      content="Generate fake WhatsApp chats, Instagram DMs, notifications, stories, Facebook posts and more with FakeStation. Perfect for pranks, content creation, and mockups. 100% free, no sign-up required." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta
+      property="og:title"
+      content="FakeStation - Free Fake Chat, Story & Notification Generator Tools" />
+    <meta
+      property="og:description"
+      content="Create fake WhatsApp chats, Instagram DMs, Facebook posts, and more. Customize easily, download and use for fun, pranks, content, or portfolio." />
+    <meta property="og:image" content="https://yourdomain.com/your-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yourdomain.com/" />
+    <meta
+      property="twitter:title"
+      content="FakeStation - Free Fake Chat, Story & Notification Generator Tools" />
+    <meta
+      property="twitter:description"
+      content="Create fake WhatsApp chats, Instagram DMs, Facebook posts, and more. 100% free and customizable." />
+    <meta
+      property="twitter:image"
+      content="https://yourdomain.com/your-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts and Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(to right, #f2f2f2, #eaeaea);
+        color: #222;
+      }
+
+      header {
+        background: #111;
+        color: #fff;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        font-size: 1rem;
+        color: #ccc;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .intro {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .intro h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #111;
+      }
+
+      .intro p {
+        font-size: 1rem;
+        color: #444;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+      }
+
+      a.tool-card {
+        display: block;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(6px);
+        border-radius: 15px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        text-decoration: none;
+        color: #222;
+      }
+
+      a.tool-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .tool-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .tool-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+        display: block;
+      }
+
+      .tool-subtitle {
+        color: #666;
+        display: block;
+        margin-top: 5px;
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      ul.bullets {
+        max-width: 600px;
+        margin: 0 auto;
+        list-style: none;
+        padding: 0;
+      }
+
+      ul.bullets li {
+        padding: 10px 0;
+        font-size: 1rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+      }
+
+      ul.bullets li::before {
+        content: "✅";
+        margin-right: 10px;
+      }
+
+      footer {
+        margin-top: 60px;
+        padding: 20px;
+        text-align: center;
+        background: #111;
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 500px) {
+        a.tool-card {
+          padding: 20px 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>🚀 FakeStation</h1>
+      <p>Create Fake Chats, Stories, and UI for Fun or Portfolio</p>
+    </header>
+
+    <div class="container">
+      <div class="intro">
+        <h2>🎭 What is FakeStation?</h2>
+        <p>
+          FakeStation is a free online toolset where you can create high-quality
+          fake UIs like WhatsApp chats, Instagram DMs, Instagram notifications,
+          Facebook posts, fake Twitter posts, and more — perfect for pranks,
+          content creation, and mockups. We are continuously adding new tools to
+          make your experience even more fun and creative!
+        </p>
+      </div>
+
+      <h2 class="section-title">🛠 Available Tools</h2>
+      <div class="tools">
+        <a href="./pages/whatsapp-fake-chat-generator.html" class="tool-card">
+          <span class="tool-icon">💬</span>
+          <span class="tool-title">WhatsApp Chat Generator</span>
+        </a>
+        <a href="./pages/instagram-dm-generator.html" class="tool-card">
+          <span class="tool-icon">📸</span>
+          <span class="tool-title">Instagram DM Generator</span>
+        </a>
+        <a href="./pages/instagram-notification.html" class="tool-card">
+          <span class="tool-icon">🔔</span>
+          <span class="tool-title">Instagram Notification Generator</span>
+        </a>
+        <a href="./pages/whatsapp-notification.html" class="tool-card">
+          <span class="tool-icon"
+            ><i class="fa-brands fa-whatsapp" style="color: green"></i
+          ></span>
+          <span class="tool-title">WhatsApp Notification Generator</span>
+        </a>
+        <a href="./pages/fake-twitter.html" class="tool-card">
+          <span class="tool-icon"
+            ><i class="fa-brands fa-twitter" style="color: #1da1f2"></i
+          ></span>
+          <span class="tool-title">Fake Twitter Post Genrator</span>
+        </a>
+        <a href="./pages/insta-story.html" class="tool-card">
+          <span class="tool-icon"
+            ><i
+              class="fa-brands fa-instagram"
+              style="color: rgb(180, 35, 35)"></i
+          ></span>
+          <span class="tool-title">Instagram Fake Story Generator</span>
+        </a>
+        <a href="./pages/fb-genrator.html" class="tool-card">
+          <span class="tool-icon"
+            ><i class="fa-brands fa-facebook" style="color: #4267b2"></i
+          ></span>
+          <span class="tool-title">Facebook Post Generator</span>
+        </a>
+        <a href="./pages/image-drop-download.html" class="tool-card">
+          <span class="tool-icon">🖼</span>
+          <span class="tool-title">Image Drop & Download Tool</span>
+        </a>
+      </div>
+
+      <h2 class="section-title">🔧 Why Use These Tools?</h2>
+      <ul class="bullets">
+        <li>No need to edit real chats or screenshots</li>
+        <li>Use it for memes, tutorials, fun, or portfolio</li>
+        <li>Customize names, avatars, messages and download fake UIs</li>
+        <li>Completely free, no sign-up required</li>
+      </ul>
+    </div>
+
+    <footer>Made with ❤️ by Faizan Ansari | FakeStation © 2025</footer>
+  </body>
+</html>

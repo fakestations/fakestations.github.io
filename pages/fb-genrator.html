@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Fake Facebook Post Generator - Create Custom Facebook Posts</title>
+  
+    <meta name="description" content="Create realistic fake Facebook posts easily! Customize profile picture, name, text, likes, comments, and download your fake post as an image. No sign-up, 100% free!" />
+    
+    <meta name="keywords" content="fake Facebook post generator, Facebook post maker, create fake Facebook post, Facebook meme generator, free Facebook post template" />
+    
+    <meta name="author" content="FakeStation" />
+    <link rel="stylesheet" href="../src/style.css" />  
+    <style>
+      body {
+        background: #e9ebee;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .facebook-post {
+        background: white;
+        max-width: 500px;
+        margin: 20px auto;
+        /* border-radius: 10px; */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+      }
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .post-header img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .post-header .name-time {
+        display: flex;
+        flex-direction: column;
+      }
+      .post-header .name-time strong {
+        font-size: 16px;
+      }
+      .post-header .name-time span {
+        font-size: 12px;
+        color: gray;
+      }
+      .post-content {
+        margin: 15px 0;
+        font-size: 15px;
+      }
+      .post-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        font-size: 14px;
+        color: gray;
+      }
+      .post-actions div {
+        cursor: pointer;
+      }
+      .controls {
+        max-width: 500px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+      .controls input,
+      .controls textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .controls label {
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+      }
+      #downloadBtn {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #1877f2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div
+        class="flex flex-col justify-center items-center py-4 px-4 sm:px-0 border-b gap-2">
+        <a href="/" class="logoContainer"> 🚀 FakeStation </a>
+      </div>
+    </header>
+    <!-- Editable Post -->
+    <div class="facebook-post" id="post">
+      <div class="post-header">
+        <img src="../img/profile.jpeg" id="profile-pic" alt="Profile Pic" />
+        <div class="name-time">
+          <strong id="username">John Doe</strong>
+          <span id="post-time">2 days ago • 🌍</span>
+        </div>
+      </div>
+      <div class="post-content" id="post-content">
+        Exploring the wonders of Antelope Canyon. 🏞️
+      </div>
+      <img
+        src="../img/bg.jpeg"
+        id="post-image"
+        alt="Post Image"
+        style="width: 100%; border-radius: 10px; margin-top: 10px" />
+
+      <div class="post-actions">
+        <div id="likes">👍 1.2K Likes</div>
+        <div id="comments">💬 300 Comments</div>
+        <div id="shares">🔁 100 Shares</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <label>Profile Picture</label>
+      <input type="file" id="profilePicInput" />
+
+      <label>Username</label>
+      <input type="text" id="usernameInput" placeholder="Enter Name" />
+
+      <label>Post Time</label>
+      <input type="text" id="timeInput" placeholder="e.g., 2 days ago" />
+
+      <label>Post Content</label>
+      <textarea
+        id="contentInput"
+        rows="3"
+        placeholder="Write post content"></textarea>
+
+      <label>Post Image</label>
+      <input type="file" id="postImageInput" />
+
+      <label>Likes</label>
+      <input type="text" id="likesInput" placeholder="e.g., 1.2K Likes" />
+
+      <label>Comments</label>
+      <input type="text" id="commentsInput" placeholder="e.g., 300 Comments" />
+
+      <label>Shares</label>
+      <input type="text" id="sharesInput" placeholder="e.g., 100 Shares" />
+
+      <button id="downloadBtn">Download Post as Image</button>
+    </div>
+    <!-- other tool -->
+    <div class="main-header">
+      <div
+        class="flex justify-center w-full gap-2 flex-wrap"
+        style="margin-top: 8px">
+        <a title="Home Page" href="../" class="mainLink">Home</a>
+        <a
+          title="YouTube Tags Generator"
+          href="../pages/whatsapp-fake-chat-generator.html"
+          class="mainLink"
+          >WhatsApp Chat</a
+        >
+
+        <a
+          title="Image Drop and Download"
+          href="../pages/image-drop-download.html"
+          class="mainLink">
+          Image Drop &amp; Download
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-dm-generator.html"
+          class="mainLink">
+          Instagram DM Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-notification.html"
+          class="mainLink">
+          Instagram Notification Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/whatsapp-notification.html"
+          class="mainLink">
+          WhatsApp Notification Generator
+        </a>
+      </div>
+    </div>
+
+    <div
+      style="
+        max-width: 550px;
+        margin-top: 40px;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: auto;
+      ">
+      <h2 style="color: #1877f2; text-align: center">
+        Fake Facebook Post Generator
+      </h2>
+
+      <h3>📌 When to Use</h3>
+      <ul>
+        <li>
+          Creating <strong>fake Facebook posts</strong> for fun, pranks, or
+          creative projects.
+        </li>
+        <li>
+          Making <strong>storytelling videos</strong> or
+          <strong>memes</strong> showing fake posts.
+        </li>
+        <li>
+          Designing <strong>UI/UX mockups</strong> or sample Facebook posts for
+          portfolios.
+        </li>
+        <li>
+          Adding a <strong>fake Facebook post scene</strong> while
+          <strong>video editing</strong> (to show posts in a reel, vlog, skit,
+          etc.).
+        </li>
+      </ul>
+
+      <h3>💡 Why Use This Tool?</h3>
+      <ul>
+        <li>✅ <strong>No coding or Photoshop</strong> skills needed.</li>
+        <li>
+          ✅ Completely <strong>free to use</strong> and
+          <strong>no sign-up</strong> required.
+        </li>
+        <li>
+          ✅ You can
+          <strong
+            >customize profile picture, name, post text, like count, comment
+            count</strong
+          >, and more.
+        </li>
+        <li>
+          ✅ Easily <strong>download</strong> the final fake post as an image.
+        </li>
+      </ul>
+
+      <h3>📖 How to Use (Tutorial)</h3>
+      <ol>
+        <li>👤 Upload a profile picture by clicking the avatar area.</li>
+        <li>
+          ✍️ Type a name for the Facebook user (e.g., "John Doe", "Best
+          Friend").
+        </li>
+        <li>
+          📝 Write a post content (text you want to display in the fake post).
+        </li>
+        <li>👍 Set the number of likes, comments, and shares if you want.</li>
+        <li>
+          🎨 Customize other details like time posted, location, or hashtags if
+          available.
+        </li>
+        <li>
+          📥 Finally, click on <strong>Download Post</strong> to save the fake
+          Facebook post image.
+        </li>
+      </ol>
+    </div>
+
+    <!-- html2canvas library -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script>
+      // Change Text Inputs
+      document
+        .getElementById("usernameInput")
+        .addEventListener("input", function () {
+          document.getElementById("username").innerText =
+            this.value || "John Doe";
+        });
+
+      document
+        .getElementById("timeInput")
+        .addEventListener("input", function () {
+          document.getElementById("post-time").innerText =
+            this.value || "2 days ago";
+        });
+
+      document
+        .getElementById("contentInput")
+        .addEventListener("input", function () {
+          document.getElementById("post-content").innerText =
+            this.value || "Exploring the wonders...";
+        });
+
+      document
+        .getElementById("likesInput")
+        .addEventListener("input", function () {
+          document.getElementById("likes").innerText =
+            "👍 " + (this.value || "1.2K Likes");
+        });
+
+      document
+        .getElementById("commentsInput")
+        .addEventListener("input", function () {
+          document.getElementById("comments").innerText =
+            "💬 " + (this.value || "300 Comments");
+        });
+
+      document
+        .getElementById("sharesInput")
+        .addEventListener("input", function () {
+          document.getElementById("shares").innerText =
+            "🔁 " + (this.value || "100 Shares");
+        });
+
+      // Change Profile Pic
+      document
+        .getElementById("profilePicInput")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              document.getElementById("profile-pic").src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+      // Change Post Image
+      document
+        .getElementById("postImageInput")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              document.getElementById("post-image").src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+      // Download post as image
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", function () {
+          html2canvas(document.getElementById("post")).then(function (canvas) {
+            const link = document.createElement("a");
+            link.download = "fake-facebook-post.png";
+            link.href = canvas.toDataURL();
+            link.click();
+          });
+        });
+    </script>
+  </body>
+</html>

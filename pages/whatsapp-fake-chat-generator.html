@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Dummy Chat Creator</title>
+    <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #ece5dd;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .container {
+        width: 100%;
+        max-width: 400px;
+        min-height: 70vh;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        background: #075e54;
+        color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .chat-area {
+        background: #e5ddd5;
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .msg {
+        padding: 8px 12px;
+        margin: 8px 0;
+        border-radius: 7px;
+        max-width: 70%;
+        position: relative;
+        font-size: 14px;
+        word-wrap: break-word;
+      }
+      .msg-time {
+        font-size: 10px;
+        color: gray;
+        position: absolute;
+        bottom: -14px;
+        right: 8px;
+        white-space: nowrap;
+      }
+      .received {
+        background: #fff;
+        align-self: flex-start;
+      }
+      .sent {
+        background: #dcf8c6;
+        align-self: flex-end;
+      }
+      .chat-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .message-input {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+        background: #f0f0f0;
+      }
+      .message-input textarea {
+        flex: 1;
+        resize: none;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        outline: none;
+      }
+      .message-input button {
+        margin-left: 10px;
+        padding: 8px 14px;
+        font-size: 14px;
+        border: none;
+        border-radius: 20px;
+        background: #075e54;
+        color: white;
+        cursor: pointer;
+      }
+      .name-input {
+        color: white;
+        background: transparent;
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        outline: none;
+      }
+      .controls {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .controls select,
+      .controls button {
+        padding: 8px;
+        font-size: 14px;
+      }
+      .header-left {
+        display: flex;
+        align-items: center;
+      }
+      .headerIcon {
+        display: flex;
+        gap: 15px;
+        font-size: 16px;
+      }
+      @media screen and (max-width: 500px) {
+        .container {
+          height: 65vh;
+        }
+        .msg-time {
+          font-size: 9px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div
+        class="flex flex-col justify-center items-center py-4 px-4 sm:px-0 border-b gap-2">
+        <a href="/" class="logoContainer"> 🚀 FakeStation </a>
+      </div>
+    </header>
+    <div class="container" id="capture">
+      <div class="header">
+        <div class="header-left">
+          <input
+            type="file"
+            accept="image/*"
+            id="avatarInput"
+            style="display: none" />
+          <img
+            id="avatar"
+            src="../../img/profile.jpeg"
+            alt="avatar"
+            onclick="document.getElementById('avatarInput').click()" />
+          <input
+            type="text"
+            id="name"
+            class="name-input"
+            placeholder="Name"
+            value="Faizan Ansari" />
+        </div>
+        <div class="headerIcon">
+          <i class="fa-solid fa-video"></i>
+          <i class="fa-solid fa-phone"></i>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+
+      <div class="chat-area chat-wrapper" id="chatArea"></div>
+
+      <div class="message-input">
+        <textarea
+          id="messageText"
+          rows="1"
+          placeholder="Type a message"></textarea>
+        <button onclick="addMessage()">Send</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <select id="sender">
+        <option value="received">Person</option>
+        <option value="sent">You</option>
+      </select>
+      <button onclick="downloadChat()">Download Chat</button>
+    </div>
+
+    <!-- other tool -->
+    <div class="main-header">
+      <div
+        class="flex justify-center w-full gap-2 flex-wrap"
+        style="margin-top: 8px">
+        <a
+          title="YouTube Tags Generator"
+          href="../pages/whatsapp-fake-chat-generator.html"
+          class="mainLink"
+          >WhatsApp Chat</a
+        >
+
+        <a
+          title="Image Drop and Download"
+          href="../pages/image-drop-download.html"
+          class="mainLink">
+          Image Drop &amp; Download
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-dm-generator.html"
+          class="mainLink">
+          Instagram DM Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-notification.html"
+          class="mainLink">
+          Instagram Notification Generator
+        </a>
+        <a
+        title="Spotify Top Songs Today"
+        href="../pages/whatsapp-notification.html"
+        class="mainLink">
+        WhatsApp Notification Generator
+      </a>
+      </div>
+    </div>
+    <!-- Extra Section -->
+    <div
+      style="
+        max-width: 700px;
+        margin-top: 40px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      ">
+      <h2 style="color: #075e54; text-align: center">
+        WhatsApp Dummy Chat Creator
+      </h2>
+
+      <h3>📌 When to Use</h3>
+      <ul>
+        <li>
+          Creating <strong>fun or promotional screenshots</strong> for social
+          media.
+        </li>
+        <li>
+          Making tutorials or <strong>mockups</strong> of WhatsApp UI for videos
+          or blogs.
+        </li>
+        <li>
+          Generating <strong>fake but realistic</strong> conversations for memes
+          or storytelling.
+        </li>
+        <li>
+          Building a portfolio piece if you're a UI/UX or front-end developer.
+        </li>
+      </ul>
+
+      <h3>💡 Why Use This Tool?</h3>
+      <ul>
+        <li>✅ <strong>No need to code</strong> or edit real chats.</li>
+        <li>
+          ✅ Lightweight and <strong>free to use</strong>, no login required.
+        </li>
+        <li>
+          ✅ You can <strong>customize name, avatar, message direction</strong>,
+          and even <strong>download</strong> the image.
+        </li>
+      </ul>
+
+      <h3>📖 How to Use (Tutorial)</h3>
+      <ol>
+        <li>👤 Click the profile picture to upload a custom avatar.</li>
+        <li>✍️ Type a name in the name field (like "Friend", "Mom", etc.).</li>
+        <li>
+          💬 Write a message, choose who sent it (You or Person), and click
+          <strong>Send</strong>.
+        </li>
+        <li>
+          📥 Once done, click <strong>Download Chat</strong> to save it as a
+          WhatsApp-style screenshot.
+        </li>
+      </ol>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      const chatArea = document.getElementById("chatArea");
+
+      function getCurrentTime() {
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        return `${hours}:${minutes} ${ampm}`;
+      }
+
+      function addMessage() {
+        const text = document.getElementById("messageText").value.trim();
+        const sender = document.getElementById("sender").value;
+        if (!text) return;
+        const msg = document.createElement("div");
+        msg.className = "msg " + sender;
+        msg.innerText = text;
+        const time = document.createElement("div");
+        time.className = "msg-time";
+        time.innerText = getCurrentTime();
+        msg.appendChild(time);
+        chatArea.appendChild(msg);
+        document.getElementById("messageText").value = "";
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      document
+        .getElementById("avatarInput")
+        .addEventListener("change", function (e) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            document.getElementById("avatar").src = event.target.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        });
+
+      function downloadChat() {
+        html2canvas(document.getElementById("capture")).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "whatsapp-chat.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>

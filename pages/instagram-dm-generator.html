@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram DM Generator</title>
+    <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+      }
+
+      .dm-container {
+        width: 360px;
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header {
+        background: #fff;
+        border-bottom: 1px solid #dbdbdb;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .dm-header {
+        display: flex;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .username {
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .dm-chat-box {
+        height: 400px;
+        padding: 10px;
+        overflow-y: auto;
+        background: #fafafa;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .message {
+        max-width: 70%;
+        margin: 5px 0;
+        padding: 8px 12px;
+        border-radius: 18px;
+        font-size: 14px;
+        word-wrap: break-word;
+      }
+
+      .sent {
+        align-self: flex-end;
+        background: #3797f0;
+        color: white;
+        border-bottom-right-radius: 0;
+      }
+
+      .received {
+        align-self: flex-start;
+        background: #efefef;
+        color: black;
+        border-bottom-left-radius: 0;
+      }
+
+      .input-area {
+        display: flex;
+        padding: 10px;
+        gap: 5px;
+        /* border-top: 1px solid #dbdbdb; */
+        background: #fff;
+        justify-content: space-around;
+      }
+
+      .input-area div,
+      .input-area select {
+        flex: 1;
+        padding: 5px;
+        border-radius: 20px;
+        outline: none;
+        background-color: #efefef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .input-area input {
+        border: none;
+        flex: 1;
+        padding-left: 8px;
+        outline: none;
+        background-color: #efefef;
+      }
+      .input-area button {
+        padding: 8px 14px;
+        border: none;
+        background: #3797f0;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .cameraIcon {
+        display: inline-flex;
+        width: 30px;
+        height: 30px;
+        background: #3797f0;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      .hidden-file {
+        display: none;
+      }
+      .headerIcon {
+        display: flex;
+        gap: 15px;
+        font-size: 16px;
+      }
+      .chatIcon {
+        display: flex;
+        gap: 10px;
+        font-size: 16px;
+        color: black;
+      }
+      .chatIcon i {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div
+        class="flex flex-col justify-center items-center py-4 px-4 sm:px-0 border-b gap-2">
+        <a href="/" class="logoContainer"> 🚀 FakeStation </a>
+      </div>
+    </header>
+    <div class="dm-container" id="capture">
+      <div class="header">
+        <div class="dm-header">
+          <img
+            src="../img/profile.jpeg"
+            alt="avatar"
+            class="avatar"
+            id="avatar" />
+          <h3 class="username" id="username" contenteditable="true">
+            learn_with_fz
+          </h3>
+        </div>
+
+        <div class="headerIcon">
+          <i class="fa-solid fa-video"></i>
+          <i class="fa-solid fa-phone"></i>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+
+      <div class="dm-chat-box" id="chatBox">
+        <!-- Chat messages will appear here -->
+      </div>
+      <div class="input-area">
+        <div>
+          <span class="cameraIcon"><i class="fa-solid fa-camera"></i></span>
+          <input type="text" placeholder="Message..." />
+          <span class="chatIcon">
+            <i class="fa-solid fa-microphone"></i>
+            <i class="fa-solid fa-image"></i>
+            <i class="fa-solid fa-face-smile"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="input-area" style="margin-top: 20px">
+      <input type="text" id="messageInput" placeholder="Type a message" />
+      <select id="senderSelect">
+        <option value="you">You</option>
+        <option value="them">Them</option>
+      </select>
+      <button onclick="sendMessage()">Create</button>
+    </div>
+    <input type="file" accept="image/*" id="fileInput" class="hidden-file" />
+    <button style="margin-top: 20px" onclick="downloadChat()">
+      Download Chat
+    </button>
+
+    <!-- other tool -->
+    <div class="main-header">
+      <div
+        class="flex justify-center w-full gap-2 flex-wrap"
+        style="margin-top: 8px">
+        <a
+          title="YouTube Tags Generator"
+          href="../pages/whatsapp-fake-chat-generator.html"
+          class="mainLink"
+          >WhatsApp Chat</a
+        >
+
+        <a
+          title="Image Drop and Download"
+          href="../pages/image-drop-download.html"
+          class="mainLink">
+          Image Drop &amp; Download
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-dm-generator.html"
+          class="mainLink">
+          Instagram DM Generator
+          <span
+            class="absolute -top-1.5 -right-2 rotate-6 text-xs text-white bg-red-600 animate-pulse rounded-full px-1"
+            >New</span
+          >
+        </a>
+        <a
+        title="Spotify Top Songs Today"
+        href="../pages/instagram-notification.html"
+        class="mainLink">
+        Instagram Notification Generator
+      </a>
+      </div>
+    </div>
+    <!-- Extra Section -->
+    <div
+    style="
+      max-width: 700px;
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    "
+  >
+    <h2 style="color: #C13584; text-align: center">
+      Instagram DM Dummy Chat Creator
+    </h2>
+  
+    <h3>📌 When to Use</h3>
+    <ul>
+      <li>
+        Creating <strong>fun or promotional DMs</strong> for social
+        media posts and reels.
+      </li>
+      <li>
+        Making tutorials or <strong>mockups</strong> of Instagram DM UI for videos
+        or blogs.
+      </li>
+      <li>
+        Generating <strong>fake but realistic</strong> conversations for memes,
+        storytelling, or portfolio projects.
+      </li>
+      <li>
+        Building a sample design if you're a UI/UX or front-end developer.
+      </li>
+    </ul>
+  
+    <h3>💡 Why Use This Tool?</h3>
+    <ul>
+      <li>✅ <strong>No coding needed</strong> or real DM edits required.</li>
+      <li>
+        ✅ Simple, <strong>free to use</strong>, and no account login necessary.
+      </li>
+      <li>
+        ✅ You can <strong>customize name, avatar, message sender</strong>,
+        and <strong>download</strong> the final chat.
+      </li>
+    </ul>
+  
+    <h3>📖 How to Use (Tutorial)</h3>
+    <ol>
+      <li>👤 Click the profile picture to upload a custom avatar.</li>
+      <li>✍️ Type a name in the name field (like "Crush", "Bestie", etc.).</li>
+      <li>
+        💬 Write a DM message, choose who sent it (You or Other Person), and click
+        <strong>Send</strong>.
+      </li>
+      <li>
+        📥 Once done, click <strong>Download Chat</strong> to save it as an
+        Instagram DM screenshot.
+      </li>
+    </ol>
+  </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      const avatar = document.getElementById("avatar");
+      const fileInput = document.getElementById("fileInput");
+      const chatBox = document.getElementById("chatBox");
+
+      avatar.addEventListener("click", () => fileInput.click());
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => (avatar.src = e.target.result);
+          reader.readAsDataURL(file);
+        }
+      });
+
+      function sendMessage() {
+        const input = document.getElementById("messageInput");
+        const sender = document.getElementById("senderSelect").value;
+        const message = input.value.trim();
+        if (!message) return;
+
+        const msgDiv = document.createElement("div");
+        msgDiv.className =
+          "message " + (sender === "you" ? "sent" : "received");
+        msgDiv.textContent = message;
+
+        chatBox.appendChild(msgDiv);
+        input.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function downloadChat() {
+        const target = document.getElementById("capture");
+        html2canvas(target).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "instagram_dm_fake_chat.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>

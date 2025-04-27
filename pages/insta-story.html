@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instagram Story Generator</title>
+    <link rel="stylesheet" href="../src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        color: white;
+      }
+
+      .story-container {
+        position: relative;
+        width: 300px;
+        height: 600px;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid white;
+        margin: 20px 0;
+        background-color: #000; /* <-- change this */
+      }
+
+      .story-bg {
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+      }
+      .story-header {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 20px;
+      }
+      .story-header img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 8px;
+        /* border: 2px solid white; */
+      }
+      .nameTime {
+        display: flex;
+        align-items: center;
+      }
+      .username {
+        font-size: 16px;
+      }
+      .time {
+        font-size: 12px;
+        color: #eeebeb;
+        margin-left: 5px;
+      }
+      .send-message-area {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 10px 15px;
+      }
+      .send-message {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 20px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #ccc;
+        border: 1px solid #ccc;
+        width: 70%;
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 90%;
+        max-width: 400px;
+        margin-top: 10px;
+      }
+      input,
+      button {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+      }
+      button {
+        background: #3897f0;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #2675d7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Instagram Story Generator 📸</h1>
+
+    <div class="story-container" id="story">
+      <img
+        id="story-bg"
+        class="story-bg"
+        src="../img/bg.jpeg"
+        alt="Background" />
+      <div class="story-header">
+        <img id="avatar" src="../img/profile.jpeg" alt="Avatar" />
+        <div class="nameTime">
+          <div class="username" id="story-username">Faizan Ansari</div>
+          <span class="time" id="story-time">31m</span>
+        </div>
+      </div>
+      <div class="send-message-area">
+        <span><i class="fa-regular fa-comment"></i></span>
+        <div class="send-message">Send message...</div>
+        <span><i class="fa-regular fa-heart"></i></span>
+        <span><i class="fa-regular fa-paper-plane"></i></span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label>Upload Background Image:</label>
+      <input type="file" id="backgroundInput" accept="image/*" />
+
+      <label>Upload Avatar:</label>
+      <input type="file" id="avatarInput" accept="image/*" />
+
+      <input type="text" id="usernameInput" placeholder="Enter Username" />
+      <input
+        type="text"
+        id="timeInput"
+        placeholder="Enter Story Time (e.g., 31m)" />
+      <button onclick="generateStory()">Update Story</button>
+      <button onclick="downloadStory()">Download Story</button>
+    </div>
+    <section
+      style="
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        color: white;
+      ">
+      <h2 style="text-align: center; margin-bottom: 20px">
+        📚 About the Instagram Story Generator
+      </h2>
+
+      <h3>⭐ Why Use This Tool?</h3>
+      <p>
+        The Instagram Story Generator helps you easily create custom Instagram
+        story images without using the Instagram app. It's perfect for designing
+        demo stories, promotional content, portfolio work, or fun pranks —
+        giving you full creative freedom!
+      </p>
+
+      <h3>🕒 When Should You Use It?</h3>
+      <p>
+        Use this tool when you need sample Instagram stories for projects,
+        advertisements, tutorials, content previews, or just to have fun
+        creating realistic story mockups for yourself or clients.
+      </p>
+
+      <h3>🛠️ How to Use It?</h3>
+      <ul style="padding-left: 20px">
+        <li>Upload a Background Image for your story content.</li>
+        <li>Upload an Avatar Image for the story profile picture.</li>
+        <li>Enter the Username and Story Time you want to show.</li>
+        <li>Click <strong>Update Story</strong> to preview your changes.</li>
+        <li>
+          Click <strong>Download Story</strong> to save the final image as a
+          high-quality PNG file.
+        </li>
+      </ul>
+
+      <p style="margin-top: 15px">
+        🎯 In just a few clicks, you’ll have a professional, ready-to-share
+        Instagram Story!
+      </p>
+    </section>
+
+    <!-- other tool -->
+    <div class="main-header">
+      <div
+        class="flex justify-center w-full gap-2 flex-wrap"
+        style="margin-top: 8px">
+        <a title="Home Page" href="../" class="mainLink">Home</a>
+        <a
+          title="YouTube Tags Generator"
+          href="../pages/whatsapp-fake-chat-generator.html"
+          class="mainLink"
+          >WhatsApp Chat</a
+        >
+
+        <a
+          title="Image Drop and Download"
+          href="../pages/image-drop-download.html"
+          class="mainLink">
+          Image Drop &amp; Download
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-dm-generator.html"
+          class="mainLink">
+          Instagram DM Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/instagram-notification.html"
+          class="mainLink">
+          Instagram Notification Generator
+        </a>
+        <a
+          title="Spotify Top Songs Today"
+          href="../pages/whatsapp-notification.html"
+          class="mainLink">
+          WhatsApp Notification Generator
+        </a>
+      </div>
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+      function generateStory() {
+        const username = document.getElementById("usernameInput").value;
+        const time = document.getElementById("timeInput").value;
+        const avatarFile = document.getElementById("avatarInput").files[0];
+        const bgFile = document.getElementById("backgroundInput").files[0];
+
+        if (username) {
+          document.getElementById("story-username").textContent = username;
+        }
+
+        if (time) {
+          document.getElementById("story-time").textContent = time;
+        }
+
+        if (avatarFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("avatar").src = e.target.result;
+          };
+          reader.readAsDataURL(avatarFile);
+        }
+
+        if (bgFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("story-bg").src = e.target.result;
+          };
+          reader.readAsDataURL(bgFile);
+        }
+      }
+      function downloadStory() {
+        html2canvas(document.getElementById("story"), {
+          backgroundColor: null,
+        }).then(function (canvas) {
+          const link = document.createElement("a");
+          link.download = "fake-instagram-story.png";
+          link.href = canvas.toDataURL("image/png");
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #333;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+.main-header {
+  max-width: 630px;
+  text-align: center;
+  margin: 30px auto;
+}
+.main-footer {
+  max-width: 630px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid black;
+  border-radius: 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background-color: #b2ebf2;
+}
+
+#copyAllButton {
+  width: max-content;
+  margin-bottom: 12px;
+}
+
+.mainLink {
+  display: inline-block;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin: 3px;
+}
+.blueHeader {
+  background-color: #0a74da;
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+}
+.blueHeader h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #0a74da;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
+.btn:hover {
+  background-color: #005bb5;
+}
